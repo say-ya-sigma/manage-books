@@ -1,0 +1,6 @@
+{
+  "name": "manage-books-devcontainer",
+  "dockerComposeFile": "compose.yml",
+  "service": "backend",
+  "workspaceFolder": "/app"
+}

@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  backend:
+    build: docker/backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app
+    environment:
+      FLASK_ENV: development
+    tty: true
+    stdin_open: true
+  db:
+    image: postgres:16
+    volumes:
+      - ./docker/db:/var/lib/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: flask_db
+      POSTGRES_USER: flask_user
+      POSTGRES_PASSWORD: flask_password
