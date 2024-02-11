@@ -1,2 +1,3 @@
 app/.venv
 docker/db/data
+/__pycache__/
