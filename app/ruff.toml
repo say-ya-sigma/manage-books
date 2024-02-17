@@ -1,0 +1,34 @@
+line-length = 88 # same as black
+indent-width = 4
+target-version = "py312"
+exclude = ["migrations/versions"]
+
+[lint]
+select = [
+    # pycodestyle
+    "E",
+    "W",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    "Q",
+]
+ignore = []
+
+fixable = ["ALL"]
+
+[lint.mccabe]
+max-complexity = 5
+
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"

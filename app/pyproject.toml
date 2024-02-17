@@ -11,6 +11,8 @@ flask = "^3.0.2"
 sqlalchemy = "^2.0.25"
 alembic = "^1.13.1"
 psycopg2 = "^2.9.9"
+ruff = "^0.2.1"
+black = "^24.2.0"
 
 
 [build-system]
