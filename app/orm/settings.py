@@ -17,5 +17,4 @@ session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=en
 class Base(DeclarativeBase):
     query: QueryPropertyDescriptor
 
-    def __init__(self):
-        self.query = session.query_property()
+Base.query = session.query_property()
