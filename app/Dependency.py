@@ -1,5 +1,4 @@
 from injector import Binder, Injector
-
 from repository.UserRepository import AbstractUserRepository, UserRepository
 from service.UserService import UserService
 
