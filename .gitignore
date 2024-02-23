@@ -1,4 +1,4 @@
 app/.venv
-docker/db/data
+docker/db/data/pg-data
 __pycache__/
 *.py[cod]
