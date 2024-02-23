@@ -1,11 +1,11 @@
 version: "3.9"
 services:
   backend:
-    build: docker/backend
+    build: .
     ports:
-      - "5000:5000"
+      - 8080:8080
     volumes:
-      - ./app:/app
+      - ./:/backend
     environment:
       FLASK_ENV: development
     tty: true
