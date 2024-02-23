@@ -1,16 +1,13 @@
 from flask import Flask
-
+from presentation.adr import adr
 from presentation.api.user import actions, requests
-from presentation.decorators.adr import adr
 
-router = Flask(__name__)
+wsgi = Flask(__name__)
 
-@router.route("/")
-@adr(ActionClass=actions.hello_world.Action, RequestClass=requests.hello_world.Request)
+@wsgi.route("/")
 def hello_world():
-    pass
+    return adr(actions.hello_world.Action, requests.hello_world.HelloWorldRequest)
 
-@router.route("/user/<int:id>")
-@adr(ActionClass=actions.get_user.Action, RequestClass=requests.get_user.Request)
+@wsgi.route("/user/<int:id>")
 def get_user(id):
-    pass
+    return adr(actions.get_user.Action, requests.get_user.GetUserRequest, id=id)
