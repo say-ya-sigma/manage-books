@@ -1,22 +1,20 @@
-from flask import json
+from flask import Response, json
+from presentation.route import wsgi
 from werkzeug.exceptions import HTTPException
 
-from presentation.route import router
 
-
-@router.errorhandler(HTTPException)
+@wsgi.errorhandler(HTTPException)
 def handle_exception(e: HTTPException):
     """Return JSON instead of HTML for HTTP errors."""
-    # start with the correct headers and status code from the error
-    response = e.get_response()
-    # replace the body with JSON
-    response.data = json.dumps({
-        "code": e.code,
-        "name": e.name,
-        "description": e.description,
-    })
-    response.content_type = "application/json"
-    return response
+    return Response(
+        response=json.dumps({
+            "code": e.code,
+            "name": e.name,
+            "description": e.description,
+        }),
+        status=e.code,
+        content_type="application/json"
+    )
 
 if __name__ == "__main__":
-    router.run("0.0.0.0", debug=True)
+    wsgi.run(host="0.0.0.0", port=8080, debug=True)
