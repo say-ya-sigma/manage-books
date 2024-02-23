@@ -1,12 +1,11 @@
 import json
 
 from flask import Response
+from presentation.api.user.requests.hello_world import HelloWorldRequest
 
-from presentation.abstract.adr import AbstractAction, AbstractRequest
 
-
-class Action(AbstractAction):
-    def execute(self, request: AbstractRequest) -> Response:
+class Action:
+    def execute(self, request: HelloWorldRequest) -> Response:
         return Response(
             status=200,
             response=json.dumps({"message": "Hello, world!"}),
