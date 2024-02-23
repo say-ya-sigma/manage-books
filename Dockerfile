@@ -1,5 +1,5 @@
 FROM python:3.12
-WORKDIR /app
+WORKDIR /backend
 
 RUN apt-get update &&\
     apt-get -y install locales curl &&\
@@ -14,3 +14,8 @@ RUN pip install --upgrade pip
 RUN curl -sSL https://install.python-poetry.org | python -
 ENV PATH /root/.local/bin:$PATH
 RUN poetry config virtualenvs.in-project true
+
+COPY pyproject.toml poetry.lock ./
+RUN poetry install
+
+ENTRYPOINT ["poetry", "run", "python", "app/app.py"]
