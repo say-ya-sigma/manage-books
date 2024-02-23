@@ -17,5 +17,3 @@ RUN poetry config virtualenvs.in-project true
 
 COPY pyproject.toml poetry.lock ./
 RUN poetry install
-
-ENTRYPOINT ["poetry", "run", "python", "app/app.py"]
