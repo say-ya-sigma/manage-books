@@ -2,18 +2,17 @@ import json
 
 from flask import Response
 from injector import inject
-
-from presentation.abstract.adr import AbstractAction
-from presentation.api.user.requests.get_user import Request
+from presentation.api.user.requests.get_user import GetUserRequest
 from service.UserService import UserService
 
 
-class Action(AbstractAction):
+class Action:
     @inject
     def __init__ (self, user_service: UserService):
         self._user_service = user_service
 
-    def execute(self, request: Request) -> Response:
+    def execute(self, request: GetUserRequest) -> Response:
+
         user = self._user_service.get_user(request.get_user_request.user_id)
         return Response(
             status=200,
