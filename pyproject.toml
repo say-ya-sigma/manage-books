@@ -16,6 +16,7 @@ black = "^24.2.0"
 werkzeug = "^3.0.1"
 pydantic = "^2.6.1"
 injector = "^0.21.0"
+gunicorn = "^21.2.0"
 
 
 [build-system]
