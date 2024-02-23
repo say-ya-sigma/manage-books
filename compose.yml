@@ -13,10 +13,19 @@ services:
   db:
     image: postgres:16
     volumes:
-      - ./docker/db:/var/lib/postgresql
+      - pg-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
     environment:
       POSTGRES_DB: flask_db
       POSTGRES_USER: flask_user
       POSTGRES_PASSWORD: flask_password
+      PGDATA: /var/lib/postgresql/data/pg-data
+
+volumes:
+  pg-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/docker/db/data
+      o: bind
