@@ -1,6 +1,5 @@
-from injector import inject
-
 from entity.user.UserId import UserId
+from injector import inject
 from repository.UserRepository import UserRepository
 
 
