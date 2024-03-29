@@ -1,5 +1,5 @@
-from pydantic import Field, RootModel
+from entity.base.BaseId import BaseId
 
 
-class UserId(RootModel):
-    root: int = Field(..., ge=1)
+class UserId(BaseId, frozen=True):
+    pass
