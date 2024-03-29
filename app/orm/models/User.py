@@ -14,7 +14,7 @@ class User(MappedAsDataclass, Base):
 
     def to_entity(self):
         return EntityUser(
-            id=UserId(self.id),
+            id=UserId(value=self.id),
             name=self.name,
             email=self.email,
             password=self.password,
