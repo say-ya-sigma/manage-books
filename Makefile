@@ -7,6 +7,9 @@ docker-chown:
 docker-chmod:
 	@sudo chmod -R 664 ./docker
 
+install:
+	@poetry install
+
 flask-up:
 	@poetry run python app/app.py
 
