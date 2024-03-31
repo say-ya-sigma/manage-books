@@ -5,12 +5,14 @@ from service.UserService import UserService
 
 class Dependency:
     def __init__(self) -> None:
-        self.injector = Injector(self.__class__.config)
+        self.injector = Injector(self.config)
 
-    @classmethod
-    def config(cls, binder: Binder):
+    @staticmethod
+    def config(binder: Binder):
         binder.bind(AbstractUserRepository, to=UserRepository)
         binder.bind(UserService, to=UserService)
 
     def resolve(self, cls):
         return self.injector.get(cls)
+
+di = Dependency()
