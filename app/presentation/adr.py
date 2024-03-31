@@ -1,9 +1,7 @@
-from Dependency import Dependency
+from dependency import di
 from flask import request as flask_request
 from presentation.interface.adr import AdrAction, AdrRequest
 from werkzeug.exceptions import UnprocessableEntity
-
-di = Dependency()
 
 
 def adr(ActionClass, RequestClass, **kwargs):
