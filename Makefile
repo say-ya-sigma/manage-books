@@ -1,3 +1,12 @@
+up:
+	@docker compose up -d
+
+down:
+	@docker compose down
+
+bash:
+	@docker compose exec backend bash
+
 app-chown:
 	@sudo chown -R $(USER):$(USER) ./app
 
@@ -18,4 +27,3 @@ seed:
 
 migrate:
 	@poetry run alembic upgrade head
-	
