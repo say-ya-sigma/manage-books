@@ -27,3 +27,6 @@ seed:
 
 migrate:
 	@poetry run alembic upgrade head
+
+test:
+	@poetry run pytest
