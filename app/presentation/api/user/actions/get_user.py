@@ -1,8 +1,7 @@
-import json
-
 from flask import Response
 from injector import inject
 from presentation.api.user.requests.get_user import GetUserRequest
+from presentation.api.user.responders.get_user import GetUserResponder
 from service.UserService import UserService
 
 
@@ -14,9 +13,6 @@ class Action:
     def execute(self, request: GetUserRequest) -> Response:
 
         user = self._user_service.get_user(request.get_user_request.user_id)
-        return Response(
-            status=200,
-            response=json.dumps(user.model_dump()),
-            mimetype="application/json"
-        )
+        responder = GetUserResponder(user)
+        return responder.response
 
