@@ -10,12 +10,9 @@ def test_endpoint_response(client):
 
     # 期待するJSONデータ
     expected_data = {
-        "id": {
-            "value": 1,
-        },
+        "id": 1,
         "name": "user1",
-        "email": "user1@vantan.jp",
-        "password": "password1"
+        "email": "user1@vantan.jp"
     }
 
     # 実際のJSONデータと期待するJSONデータが一致することを確認
