@@ -34,10 +34,10 @@ ADR パターンですがドメインサービスクラスではなくアプリ�
   * `alembic` を使用したマイグレーション用のファイルが入っています。
 * `app/orm/`
   * `SQLAlchemy` のモデルなどが入っています。
-* `app/presentation`
+* `app/presentation/`
   * `Action` と `Responder` などが入っています。
-* `app/repository`
+* `app/repository/`
   * `SQLAlchemy` のモデルを使って `Pydantic` のエンティティを返すリポジトリクラスが入っています。
-* `app/service`
+* `app/service/`
   * エンティティを使ってリクエストを構築するサービスクラスが入っています。
 
