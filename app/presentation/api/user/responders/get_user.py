@@ -5,7 +5,7 @@ from flask import Response
 from pydantic import BaseModel
 
 
-class GetUserResponder(BaseModel):
+class GetUserResponseDto(BaseModel):
     id: int
     name: str
     email: str
@@ -16,10 +16,14 @@ class GetUserResponder(BaseModel):
             email=user.email
         )
 
-    @property
-    def response(self) -> Response:
+class GetUserResponder:
+    dto: GetUserResponseDto
+    def __init__(self, dto: GetUserResponseDto):
+        self._dto = dto
+
+    def getResponse(self) -> Response:
         return Response(
             status=200,
-            response=json.dumps(self.model_dump()),
+            response=json.dumps(self._dto.model_dump()),
             mimetype="application/json"
         )

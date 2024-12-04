@@ -14,5 +14,5 @@ class Action:
 
         user = self._user_service.get_user(request.get_user_request.user_id)
         responder = GetUserResponder(user)
-        return responder.response
+        return responder.getResponse()
 
