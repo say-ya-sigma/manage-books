@@ -1,6 +1,9 @@
 up:
 	@docker compose up -d
 
+build:
+	@docker compose build
+
 down:
 	@docker compose down
 
@@ -25,8 +28,14 @@ flask-up:
 seed:
 	@poetry run python app/seed.py
 
+truncate:
+	@poetry run python app/truncate.py
+
 migrate:
 	@poetry run alembic upgrade head
+
+generate-migration:
+	@poetry run alembic revision --autogenerate -m ${m}
 
 test:
 	@poetry run pytest
