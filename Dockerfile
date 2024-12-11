@@ -6,6 +6,7 @@ RUN apt-get update &&\
     locales\
     curl\
     git\
+    postgresql-client\
     bash-completion &&\
     localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
 ENV LANG ja_JP.UTF-8
