@@ -1,3 +1,4 @@
+from orm.mixins.TimestampMixin import TimestampMixin
 from sqlalchemy import create_engine
 from sqlalchemy.orm import (
     DeclarativeBase,
@@ -14,7 +15,7 @@ engine = create_engine(DATABASE)
 session = scoped_session(sessionmaker(bind=engine))
 
 
-class Base(DeclarativeBase):
+class Base(DeclarativeBase, TimestampMixin):
     query: QueryPropertyDescriptor
 
 Base.query = session.query_property()
