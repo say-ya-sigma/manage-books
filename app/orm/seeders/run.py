@@ -8,3 +8,4 @@ def run(session: Session | None = None):
     if session is None:
         session = seeders_session
     users_seeder(session)
+    session.close()
