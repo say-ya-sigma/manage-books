@@ -11,4 +11,3 @@ def users_seeder(session: Session):
         ]
     )
     session.commit()
-    session.close()
