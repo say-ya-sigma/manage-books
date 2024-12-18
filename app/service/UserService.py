@@ -1,12 +1,12 @@
 from entity.user.UserId import UserId
 from injector import inject
 from presentation.api.user.responders.get_user import GetUserResponseDto
-from repository.UserRepository import UserRepository
+from repository.UserRepository import AbstractUserRepository
 
 
 class UserService:
     @inject
-    def __init__(self, user_repository: UserRepository):
+    def __init__(self, user_repository: AbstractUserRepository):
         self._user_repository = user_repository
 
     def get_user(self, user_id: UserId) -> GetUserResponseDto:
