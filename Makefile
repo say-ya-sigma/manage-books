@@ -31,6 +31,9 @@ seed:
 truncate:
 	@poetry run python app/truncate.py
 
+drop:
+	@poetry run python app/drop.py
+
 migrate:
 	@poetry run alembic upgrade head
 
