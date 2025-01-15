@@ -1,4 +1,8 @@
 from injector import Binder, Injector
+from repository.BookCategoryRepository import (
+    AbstractBookCategoryRepository,
+    BookCategoryRepository,
+)
 from repository.UserRepository import AbstractUserRepository, UserRepository
 from service.UserService import UserService
 
@@ -9,7 +13,10 @@ class Dependency:
 
     @staticmethod
     def config(binder: Binder):
+        # repository
         binder.bind(AbstractUserRepository, to=UserRepository)
+        binder.bind(AbstractBookCategoryRepository, to=BookCategoryRepository)
+        # service
         binder.bind(UserService, to=UserService)
 
     def resolve(self, cls):
