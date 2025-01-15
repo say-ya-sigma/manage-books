@@ -1,4 +1,7 @@
-def test_endpoint_response(client):
+from flask.testing import FlaskClient
+
+
+def test_get_user(client: FlaskClient):
     # エンドポイントにリクエストを送信
     response = client.get("/user/1")
 
