@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
-from entity.user.UserId import UserId
+from entity.user import User as EntityUser
+from entity.user import UserId
 from error.common import NotFoundException
 from orm.models.User import User
 
@@ -11,7 +12,7 @@ class AbstractUserRepository(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def find_by_id(self, id: UserId):
+    def find_by_id(self, id: UserId) -> EntityUser:
         raise NotImplementedError
 
 
