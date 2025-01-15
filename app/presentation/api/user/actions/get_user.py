@@ -8,11 +8,11 @@ from service.UserService import UserService
 class Action:
     @inject
     def __init__ (self, user_service: UserService):
-        self._user_service = user_service
+        self.__user_service = user_service
 
     def execute(self, request: GetUserRequest) -> Response:
 
-        user = self._user_service.get_user(request.get_user_request.user_id)
+        user = self.__user_service.get_user(request.user_id)
         responder = GetUserResponder(user)
         return responder.getResponse()
 
