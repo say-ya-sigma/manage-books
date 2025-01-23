@@ -16,6 +16,8 @@ session = scoped_session(sessionmaker(bind=engine))
 
 
 class Base(DeclarativeBase, TimestampMixin):
+    session: scoped_session[Session]
     query: QueryPropertyDescriptor
 
 Base.query = session.query_property()
+Base.session = session
