@@ -17,4 +17,3 @@ class Action:
         )
         responder = GetCategoryResponder(book_category)
         return responder.getResponse()
-
