@@ -1,5 +1,5 @@
-from entity.user.User import User as EntityUser
-from entity.user.UserId import UserId
+from entity.user import User as EntityUser
+from entity.user import UserId
 from orm.settings import Base
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, MappedAsDataclass, mapped_column
