@@ -25,3 +25,10 @@ def get_book_category(id):
         BookCategoryRequests.get_category.GetCategoryRequest,
         id=id
     )
+
+@wsgi.post("/book/category")
+def create_book_category():
+    return adr(
+        BookCategoryActions.create_category.Action,
+        BookCategoryRequests.create_category.CreateCategoryRequest,
+    )
