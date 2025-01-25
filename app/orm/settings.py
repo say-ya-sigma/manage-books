@@ -20,5 +20,13 @@ class Base(DeclarativeBase, TimestampMixin):
     session: scoped_session[Session]
     query: QueryPropertyDescriptor
 
+    def save(self):
+        self.session.add(self)
+        self.session.commit()
+
+    def delete(self):
+        self.session.delete(self)
+        self.session.commit()
+
 Base.query = session.query_property()
 Base.session = session
