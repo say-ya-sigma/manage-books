@@ -26,4 +26,4 @@ RUN curl -o /root/.git-prompt.sh https://raw.githubusercontent.com/git/git/maste
 COPY pyproject.toml poetry.lock ./
 COPY docker/backend/.extra_bashrc /root/.extra_bashrc
 RUN echo "source /root/.extra_bashrc" >> /root/.bashrc
-RUN poetry install
+RUN poetry install --no-root
