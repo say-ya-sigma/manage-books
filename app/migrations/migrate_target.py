@@ -4,3 +4,4 @@ from orm.settings import Base
 from orm.models.User import User
 from orm.models.BookCategory import BookCategory
 from orm.models.Book import Book
+from orm.models.Session import Session
