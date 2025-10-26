@@ -19,6 +19,7 @@ injector = "^0.21.0"
 gunicorn = "^21.2.0"
 pytest = "^8.2.0"
 sqlalchemy-utils = "^0.41.2"
+bcrypt = "^5.0.0"
 
 
 [build-system]
