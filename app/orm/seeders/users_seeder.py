@@ -1,4 +1,3 @@
-from bcrypt import hashpw
 from orm.models.User import User
 from sqlalchemy.orm import Session
 
