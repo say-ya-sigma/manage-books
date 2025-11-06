@@ -15,6 +15,10 @@ class AbstractUserRepository(ABC):
     def find_by_id(self, id: UserId) -> EntityUser:
         raise NotImplementedError
 
+    @abstractmethod
+    def find_by_email(self, email: str) -> EntityUser:
+        raise NotImplementedError
+
 
 class UserRepository(AbstractUserRepository):
     def find_all(self):
@@ -22,6 +26,12 @@ class UserRepository(AbstractUserRepository):
 
     def find_by_id(self, id: UserId):
         user = User.query.filter(User.id == id.value).first()
+        if user is None:
+            raise NotFoundException()
+        return user.to_entity()
+
+    def find_by_email(self, email: str):
+        user = User.query.filter(User.email == email).first()
         if user is None:
             raise NotFoundException()
         return user.to_entity()
