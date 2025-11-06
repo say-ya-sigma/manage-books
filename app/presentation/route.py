@@ -32,3 +32,10 @@ def create_book_category():
         BookCategoryActions.create_category.Action,
         BookCategoryRequests.create_category.CreateCategoryRequest,
     )
+
+@wsgi.post("/auth/login")
+def login():
+    return adr(
+        UserActions.login.Action,
+        UserRequests.login.LoginRequest
+    )
