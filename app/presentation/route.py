@@ -33,6 +33,20 @@ def create_book_category():
         BookCategoryRequests.create_category.CreateCategoryRequest,
     )
 
+@wsgi.put("/book/category")
+def update_book_category():
+    return adr(
+        BookCategoryActions.update_category.Action,
+        BookCategoryRequests.update_category.UpdateCategoryRequest
+    )
+
+@wsgi.delete("/book/category")
+def delete_book_category():
+    return adr(
+        BookCategoryActions.delete_category.Action,
+        BookCategoryRequests.delete_category.DeleteCategoryRequest
+    )
+
 @wsgi.post("/auth/login")
 def login():
     return adr(
