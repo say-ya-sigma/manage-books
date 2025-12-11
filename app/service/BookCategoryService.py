@@ -22,3 +22,17 @@ class BookCategoryService:
     ) -> create_category.CreateCategoryResponseDto:
         book_category_id = self.__book_category_repository.create(name)
         return create_category.CreateCategoryResponseDto(book_category_id)
+
+    def update_book_category(
+        self,
+        book_category_id: BookCategoryId,
+        name: str
+    ) -> None:
+        self.__book_category_repository.update(book_category_id, name)
+
+    def delete_book_category(
+        self,
+        book_category_id: BookCategoryId
+    ) -> None:
+        self.__book_category_repository.delete(book_category_id)
+
