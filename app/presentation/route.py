@@ -1,5 +1,7 @@
 from flask import Flask
 from presentation.adr import adr
+from presentation.api.book import actions as BookActions
+from presentation.api.book import requests as BookRequests
 from presentation.api.book.category import actions as BookCategoryActions
 from presentation.api.book.category import requests as BookCategoryRequests
 from presentation.api.user import actions as UserActions
@@ -17,6 +19,13 @@ def hello_world():
 @wsgi.route("/user/<int:id>")
 def get_user(id):
     return adr(UserActions.get_user.Action, UserRequests.get_user.GetUserRequest, id=id)
+
+@wsgi.route("/book")
+def get_books():
+    return adr(
+        BookActions.get_books.Action,
+        BookRequests.get_books.GetBooksRequest,
+    )
 
 @wsgi.route("/book/category/<int:id>")
 def get_book_category(id):

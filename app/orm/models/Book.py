@@ -13,7 +13,7 @@ from sqlalchemy.orm import (
 
 class Book(MappedAsDataclass, Base):
     __tablename__ = "books"
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, init=False)
     title: Mapped[str] = mapped_column(String(255))
     author: Mapped[str] = mapped_column(String(255))
     isbn: Mapped[str] = mapped_column(String(13))  # ISBN is usually 13 characters long
@@ -24,7 +24,8 @@ class Book(MappedAsDataclass, Base):
 
     book_category: Mapped["BookCategory"] = relationship(
         "BookCategory",
-        backref="books"
+        backref="books",
+        init=False
     )
 
     def to_entity(self):
