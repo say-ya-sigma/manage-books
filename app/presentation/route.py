@@ -27,6 +27,22 @@ def get_books():
         BookRequests.get_books.GetBooksRequest,
     )
 
+@wsgi.route("/book/<int:id>")
+def get_book(id):
+    return adr(
+        BookActions.get_book.Action,
+        BookRequests.get_book.GetBookRequest,
+        id=id
+    )
+
+@wsgi.route("/book/category/<int:category_id>/books")
+def get_books_by_category(category_id):
+    return adr(
+        BookActions.get_books_by_category.Action,
+        BookRequests.get_books_by_category.GetBooksByCategoryRequest,
+        category_id=category_id
+    )
+
 @wsgi.route("/book/category/<int:id>")
 def get_book_category(id):
     return adr(

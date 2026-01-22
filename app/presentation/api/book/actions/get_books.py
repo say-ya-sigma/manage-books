@@ -1,7 +1,7 @@
 from flask import Response
 from injector import inject
 from presentation.api.book.requests.get_books import GetBooksRequest
-from presentation.api.book.responders.get_books import GetBooksResponder
+from presentation.api.book.responders.get_books import GetBooksResponder, GetBooksResponseDto
 from service.BookService import BookService
 
 
@@ -12,5 +12,6 @@ class Action:
 
     def execute(self, request: GetBooksRequest) -> Response:
         books = self.__book_service.get_books()
-        responder = GetBooksResponder(books)
+        dto = GetBooksResponseDto(books)
+        responder = GetBooksResponder(dto)
         return responder.getResponse()
