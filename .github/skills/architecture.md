@@ -541,7 +541,7 @@ presentation/api/user/
 └── responders/
     ├── __init__.py
     ├── get_list.py
-│   └── create_user.py
+    └── create_user.py
 ```
 
 ---
