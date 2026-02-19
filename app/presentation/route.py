@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Response, json
 from presentation.adr import adr
 from presentation.api.book import actions as BookActions
 from presentation.api.book import requests as BookRequests
@@ -6,8 +6,25 @@ from presentation.api.book.category import actions as BookCategoryActions
 from presentation.api.book.category import requests as BookCategoryRequests
 from presentation.api.user import actions as UserActions
 from presentation.api.user import requests as UserRequests
+from error.auth import InvalidPasswordException
+from werkzeug.exceptions import InternalServerError
 
 wsgi = Flask(__name__)
+
+@wsgi.errorhandler(InvalidPasswordException)
+def handle_invalid_password(_error: InvalidPasswordException):
+    internal_error = InternalServerError()
+    return Response(
+        response=json.dumps(
+            {
+                "code": internal_error.code,
+                "name": internal_error.name,
+                "description": internal_error.description,
+            }
+        ),
+        status=internal_error.code,
+        content_type="application/json",
+    )
 
 @wsgi.route("/")
 def hello_world():

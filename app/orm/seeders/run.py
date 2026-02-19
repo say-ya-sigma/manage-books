@@ -6,10 +6,10 @@ from .book_seeder import book_seeder
 from .users_seeder import users_seeder
 
 
-def run(session: Session | None = None):
+def run(session: Session | None = None, minimal: bool = False):
     if session is None:
         session = seeders_session
     users_seeder(session)
-    book_category_seeder(session)
-    book_seeder(session)
+    book_category_seeder(session, minimal=minimal)
+    book_seeder(session, minimal=minimal)
     session.close()

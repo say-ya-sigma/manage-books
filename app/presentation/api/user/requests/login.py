@@ -6,7 +6,7 @@ class LoginRequest:
         self.__request = request
 
     def validate(self) -> bool:
-        json = self.__request.get_json()
+        json = self.__request.get_json(silent=True)
         if not json or "email" not in json or "password" not in json:
             print("Invalid request")
             return False

@@ -62,7 +62,7 @@ def client():
     wsgi.config["TESTING"] = True
 
     with wsgi.test_client() as client:
-        seeder_run(session=seeder_session())
+        seeder_run(session=seeder_session(), minimal=True)
 
         yield client
 
