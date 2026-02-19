@@ -1,4 +1,5 @@
 {
+    "chat.useAgentSkills": true,
     "python.analysis.extraPaths": [
         "./app"
     ],
