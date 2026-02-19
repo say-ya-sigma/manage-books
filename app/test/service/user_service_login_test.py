@@ -3,29 +3,39 @@ from datetime import datetime, timedelta
 
 import pytest
 from bcrypt import gensalt, hashpw
-
 from entity.session import CreateSession
 from entity.user import User, UserId
 from error.auth import InvalidPasswordException
+from repository.SessionRepository import AbstractSessionRepository
+from repository.UserRepository import AbstractUserRepository
 from service.UserService import UserService
 
 
-class FakeUserRepository:
+class FakeUserRepository(AbstractUserRepository):
     def __init__(self, user: User):
         self.user = user
         self.last_email = None
+
+    def find_all(self):
+        raise NotImplementedError
+
+    def find_by_id(self, id: UserId) -> User:
+        raise NotImplementedError
 
     def find_by_email(self, email: str) -> User:
         self.last_email = email
         return self.user
 
 
-class FakeSessionRepository:
+class FakeSessionRepository(AbstractSessionRepository):
     def __init__(self):
         self.created_session: CreateSession | None = None
 
     def create_session(self, session: CreateSession):
         self.created_session = session
+
+    def find_by_token(self, token: str):
+        raise NotImplementedError
 
 
 def build_user(password: str) -> User:
